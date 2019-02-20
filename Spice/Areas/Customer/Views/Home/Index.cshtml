@@ -1,0 +1,97 @@
+﻿@model Spice.Models.ViewModels.IndexViewModel
+
+<br />
+
+@if (Model.Coupon.ToList().Count > 0)
+{
+    <div class="border">
+        <!--use bootstrap to loop though the coupons with a carousel -->
+        <div class="carousel" data-ride="carousel" data-interval="2500">
+            @for (int i = 0; i < Model.Coupon.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    <div class="carousel-item active">
+
+                        @{
+                            var base64 = Convert.ToBase64String(Model.Coupon.ToList()[i].Picture);
+                            var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        }
+                        <img src="@imgSrc" height="50px" class="d-block w-100" />
+                    </div>
+                }
+                else
+                {
+                    <div class="carousel-item">
+
+                        @{
+                            var base64 = Convert.ToBase64String(Model.Coupon.ToList()[i].Picture);
+                            var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        }
+                        <img src="@imgSrc" height="50px" class="d-block w-100" />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+
+<br /><br />
+
+<div class="backgroundWhite container">
+
+    <ul id="menu-filters" class="menu-filter-list list-inline text-center">
+        <!-- -filter is just a keyword for our data attribute-->
+        <li class="filter active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Show All</li>
+
+        @foreach (var item in Model.Category)
+        {
+            <li class="filter ml-1 mr-1" data-filter=".@item.Name.Replace(" ", string.Empty)">@item.Name</li>
+        }
+
+    </ul>
+
+    @foreach (var category in Model.Category)
+    {
+        <div class="row" id="menu-wrapper">
+            <partial name="_ThumbnailAreaPartial" model="@Model.MenuItem.Where(u=>u.Category.Name.Equals(category.Name))" />
+        </div>
+    }
+</div>
+
+@section Scripts{ 
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+</script>
+
+<script>
+    var posts = $('.post'); //gets the post from _thumbnailareapartial cshtml div using jquery
+
+    (function ($)
+    {
+        //anytime a menu filter is clicked
+        $("#menu-filters li").click(function ()
+        {
+            //when clicked we want to remove the active and btn classes
+            $("#menu-filters li").removeClass('active btn btn-secondary');
+
+            //now we want to add those classes to the current one clicked
+            $(this).addClass('active btn btn-secondary');
+
+            //get the filter from our data-filter property we added 
+            var selectedFilter = $(this).data("filter");
+
+            //fade out the old button
+            $(".menu-restaurant").fadeOut();
+
+            //set a timer for that action
+            setTimeout(function ()
+            {
+                $(selectedFilter).slideDown();
+            }, 300);
+        });
+    })(jQuery);
+</script>
+}

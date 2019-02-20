@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\mwall\Desktop\Spice</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=localhost\SQLEXPRESS%3bDatabase=master%3bTrusted_Connection=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Spice.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:spice20190217032607dbserver.database.windows.net,1433%3bInitial Catalog=Spice20190217032607_db%3bUser Id=adminuser%40spice20190217032607dbserver%3bPassword=Abc123!!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
