@@ -28,7 +28,7 @@ The Tutorial explains more of the setup if you are interested
 * Creating a new user
 ![createnew](https://user-images.githubusercontent.com/15223204/53126336-e4352780-352d-11e9-8f7e-8e10e163e64a.png)
 
-* Manager User Controls
+* Manage User Controls
 ![users](https://user-images.githubusercontent.com/15223204/53126362-f57e3400-352d-11e9-94bc-a2dbeae13473.png)
 
 * Item Details
