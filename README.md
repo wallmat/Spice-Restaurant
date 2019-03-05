@@ -19,7 +19,6 @@ The Tutorial explains more of the setup if you are interested
 * Use Entity Framework with code first migrations with SQL and CRUD operations
 * Create custom Tag Helpers in MVC Core 2.2
 * Use Bootstrap v4
-* Manager user sessions
 * Integrate 3rd party login with Facebook and Google
 * Added payments using Stripe
 * Use JavaScript and Ajax for DOM manipulation such as pagination and custom modals
